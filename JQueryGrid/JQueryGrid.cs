@@ -82,9 +82,7 @@ namespace Trirand.Web.UI.WebControls
         {            
             string nd = HttpContext.Current.Request.QueryString["nd"];
             if (!String.IsNullOrEmpty(nd))
-            {                
-                //DataSourceView dataView = this.GetData();
-                //dataView.Select(
+            {   
                 GetData().Select(CreateDataSourceSelectArguments(), OnDataSourceViewSelectCallback);                
             }
         }
