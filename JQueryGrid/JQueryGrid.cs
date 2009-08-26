@@ -7,6 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Script.Serialization;
+using System.Data;
+using System.Collections;
+using System.Reflection;
 
 namespace Trirand.Web.UI.WebControls
 {
@@ -20,46 +23,69 @@ namespace Trirand.Web.UI.WebControls
         {
             base.OnInit(e);
             sr = new JavaScriptSerializer();
+            
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
+            ProcessCallBack();
+        }       
+
+        private void OnDataSourceViewSelectCallback(IEnumerable retrievedData)
+        {
+            // Call OnDataBinding only if it has not already been 
+            // called in the PerformSelect method.
+            if (IsBoundUsingDataSourceID)
+            {
+                OnDataBinding(EventArgs.Empty);
+            }
+
+            DataView view = (DataView)retrievedData;
+            DataTable dt = view.ToTable();
+            // The PerformDataBinding method binds the data in the  
+            // retrievedData collection to elements of the data-bound control.
+            //PerformDataBinding(retrievedData);                      
+            JsonResponse response = new JsonResponse();
+
+            int rows = Convert.ToInt32(HttpContext.Current.Request.QueryString["rows"]);
+            int page = Convert.ToInt32(HttpContext.Current.Request.QueryString["page"]);
+            int count = dt.Rows.Count;
+            int total = (count > 0) ? Convert.ToInt32(Math.Ceiling((double)(count / rows))) : 0;
+
+            response.page = page;
+            response.total = total;
+            response.records = count;
+            response.rows = new JsonRow[rows];
+
+            int index = 0;
+            for (int i = (page - 1) * rows; i < (page - 1) * rows + rows; i++)
+            {
+                object[] newData = new object[] { dt.Rows[i][0],dt.Rows[i][1],dt.Rows[i][2],
+                                                    dt.Rows[i][3],dt.Rows[i][4],dt.Rows[i][5],dt.Rows[i][6] };                
+
+                JsonRow row = new JsonRow();
+                row.id = newData[0].ToString();
+                row.cell = newData;
+                response.rows[index++] = row;
+            }
+
+            JavaScriptSerializer sr = new JavaScriptSerializer();
+            var result = sr.Serialize(response);
+
+            HttpContext.Current.Response.Write(result);
+            HttpContext.Current.Response.Flush();
+            HttpContext.Current.Response.End();
         }
 
         private void ProcessCallBack()
-        {
+        {            
             string nd = HttpContext.Current.Request.QueryString["nd"];
             if (!String.IsNullOrEmpty(nd))
-            {
-                DataTable dt = GetData();
-                JsonResponse response = new JsonResponse();
-
-                int rows = Convert.ToInt32(Request.QueryString["rows"]);
-                int page = Convert.ToInt32(Request.QueryString["page"]);
-                int count = dt.Rows.Count;
-                int total = (count > 0) ? Convert.ToInt32(Math.Ceiling((double)(count / rows))) : 0;
-
-                response.page = page;
-                response.total = total;
-                response.records = count;
-                response.rows = new JsonRow[rows];
-
-                for (int i = 0; i < rows; i++)
-                {
-                    object[] newData = new object[] { dt.Rows[i][0],dt.Rows[i][0],dt.Rows[i][0],
-                                                    dt.Rows[i][0],dt.Rows[i][0],dt.Rows[i][0],dt.Rows[i][0] };
-
-                    DataTable currentDt = GetDataTableWithSchema();
-                    currentDt.Rows.Add(newData);
-
-                    JsonRow row = new JsonRow();
-                    row.id = newData[0].ToString();
-                    row.cell = newData;
-                    response.rows[i] = row;
-                }
-
-                JavaScriptSerializer sr = new JavaScriptSerializer();
-                var result = sr.Serialize(response);
-
-                Response.Write(result);
-                Response.Flush();
-                Response.End();
+            {                
+                //DataSourceView dataView = this.GetData();
+                //dataView.Select(
+                GetData().Select(CreateDataSourceSelectArguments(), OnDataSourceViewSelectCallback);                
             }
         }
         
@@ -136,37 +162,7 @@ namespace Trirand.Web.UI.WebControls
             sb.Append("</script>");
 
             return sb.ToString();
-        }
-
-        
-//            jQuery("#list7").jqGrid({
-//    url:'server.php?q=2',
-//    datatype: "json",
-//    colNames:['Inv No','Date', 'Client', 'Amount','Tax','Total','Notes'],
-//    colModel:[
-//        {name:'id',index:'id', width:55},
-//        {name:'invdate',index:'invdate', width:90},
-//        {name:'name',index:'name', width:100},
-//        {name:'amount',index:'amount', width:80, align:"right"},
-//        {name:'tax',index:'tax', width:80, align:"right"},		
-//        {name:'total',index:'total', width:80,align:"right"},		
-//        {name:'note',index:'note', width:150, sortable:false}		
-//    ],
-//    rowNum:10,
-//    rowList:[10,20,30],
-//    imgpath: gridimgpath,
-//    pager: jQuery('#pager7'),
-//    sortname: 'id',
-//    viewrecords: true,
-//    sortorder: "desc",
-//    caption:"Set Methods Example",
-//    hidegrid: false,
-//    height: 210
-//});
-
-
-
-        
+        }        
     }
 
     public class ColModel

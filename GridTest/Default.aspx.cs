@@ -104,9 +104,8 @@ namespace GridTest
             DataTable dt = GetDataTableWithSchema();
             
             for (int i=0; i<100; i++)
-            {
-                object[] data = { r.Next(1000), System.DateTime.Now, "Rumen", r.Next(10000), r.Next(10000), r.Next(10000), "Note" };
-                dt.Rows.Add(data);
+            {                
+                dt.Rows.Add(new object [] { "a" + i.ToString(), "a", "a", "a", "a", "a", "a" });
             }
 
             return dt;

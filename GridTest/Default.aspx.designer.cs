@@ -29,6 +29,6 @@ namespace GridTest {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::JQueryGrid.JQGrid JQGrid1;
+        protected global::Trirand.Web.UI.WebControls.JQueryGrid JQGrid1;
     }
 }

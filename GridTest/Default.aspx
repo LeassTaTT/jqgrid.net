@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="GridTest._Default" %>
 
-<%@ Register assembly="JQueryGrid" namespace="JQueryGrid" tagprefix="cc1" %>
+<%@ Register assembly="JQueryGrid" namespace="Trirand.Web.UI.WebControls" tagprefix="cc1" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -77,7 +77,7 @@
     
     
     </div>
-    <cc1:JQGrid ID="JQGrid1" runat="server" AutoGenerateColumns="false">
+    <cc1:JQueryGrid ID="JQGrid1" runat="server" AutoGenerateColumns="false">
         <Columns>
             <asp:BoundField DataField="id" />
             <asp:BoundField DataField="invdate" />
@@ -87,7 +87,7 @@
             <asp:BoundField DataField="total" />
             <asp:BoundField DataField="note" />
         </Columns>
-    </cc1:JQGrid>
+    </cc1:JQueryGrid>
     
     </form>
 </body>
