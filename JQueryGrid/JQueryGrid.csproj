@@ -8,7 +8,7 @@
     <ProjectGuid>{B6610FBA-5348-42DE-A1F8-13E08E5C6385}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JQueryGrid</RootNamespace>
+    <RootNamespace>Trirand.Web.UI.WebControls</RootNamespace>
     <AssemblyName>JQueryGrid</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -36,9 +36,11 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -50,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JQueryGrid.cs" />
+    <Compile Include="JsonResponse.cs" />
+    <Compile Include="JsonRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
