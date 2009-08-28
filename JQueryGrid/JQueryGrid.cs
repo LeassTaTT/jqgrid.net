@@ -153,6 +153,7 @@ namespace Trirand.Web.UI.WebControls
             sb.AppendFormat("rowList: [10,20,30]\n\r,", GetColModel());
             sb.AppendFormat("pager: jQuery('#{0}'),", ClientID + "_pager");
             sb.AppendFormat("height: 300,");
+            sb.AppendFormat("multiselect: true,");
             sb.AppendFormat("caption: '{0}'", "Server Control jqGrid");
             sb.AppendFormat("}})\n\r");
             sb.AppendFormat(".navGrid('#{0}', {{ edit: true, add: true, del: true}});", ClientID + "_pager");

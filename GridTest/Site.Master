@@ -1,0 +1,254 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="GridTest.Site" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Trirand jqGrid for ASP.NET Webforms and ASP.NET MVC</title>
+	<meta name="author"      content="Trirand, LLC" />
+	<meta name="description" content="jqGrid is the world leading jQuery plugin. It is an easy to use widget, following jQuery UI patterns, with add-ons for ASP.NET Webforms, ASP.NET MVC, PHP and Ruby on Rails" />
+	<meta name="viewport"    content="width=1000" />
+	<link rel="stylesheet" type="text/css" href="css/site.css" media="screen, projection" />	
+
+	<!--[if lte IE 7]>
+	<link rel="stylesheet" type="text/css" href="stylesheets/ie.css"     media="screen, projection" />
+	<![endif]-->
+
+	<link rel="Shortcut Icon" type="image/x-icon" href="images/favicon.ico" />
+</head>
+
+<body id="page-home">
+
+<div class="header vcard">
+
+	<h1>jqGrid for ASP.NET<span></span></h1>
+
+	<ul>
+		<li id="n-home">
+			<strong>Home<span></span></strong>
+		</li>
+
+		<li id="n-pricing">
+			<a href="pricing">Pricing<span></span></a>
+		</li>
+		<li id="n-signup">
+			<a href="signup">Signup<span></span></a>
+		</li>
+		<li id="n-blog">
+			<a href="http://blog.newsberry.com">Blog<span></span></a>
+
+		</li>
+		<li id="n-help">
+			<a href="http://help.newsberry.com/">Help<span></span></a>
+		</li>
+	</ul>
+
+	<div class="help">
+		<h2>Need help?<span></span></h2>
+
+		<p>Contact us via <a href="https://wildbit.campfirenow.com/c7a1e" class="chat">chat</a> or <a href="mailto:info@newsberry.com" class="email">email</a>.</p>
+	</div>
+
+		<a href="login" class="login">Login<span></span></a>
+
+</div>
+
+<div class="page">
+
+	<div class="slideshow">
+		<div class="container">
+
+			<div class="slide-1">
+				<h1>Send and Track Email Newsletters<span></span></h1>
+				<p>Join the thousands of companies who trust Newsberry for their email marketing success.</p>
+				<p class="signup">Get your <strong>Free Account with 100 credits</strong> today: <a href="signup" class="button"><b>Sign Up<span></span></b></a></p>
+			</div>
+
+			<div class="slide-2">
+				<h2>Manage and Segment Lists</h2>
+
+				<p>Manage and segment multiple lists, subscribers, and fields. Newsberry handles bounces, unsubscribes, and spam complaints automatically.</p>
+				<p>Need a custom subscribe form on your site? No problem.</p>
+
+				<div class="screenshot">
+
+					<img src="images/ss-lists.jpg" alt="Screenshot of Subscriber Lists" title="Manage and Segment Lists" />
+				</div>
+			</div>
+
+			<div class="slide-3">
+				<h2>Design &amp; Create Campaigns</h2>
+				<p>Create campaigns using templates, text only, or provide your own HTML. Our rich editor allows you to edit content easily.</p>
+
+				<p>What&#8217;s more, you can target subscribers based on demographic information and schedule campaigns to send at a later time.</p>
+
+				<div class="screenshot">
+					<img src="images/ss-editor.jpg" alt="Screenshot of Content Editor" title="Design &amp; Create Campaigns" />
+				</div>
+			</div>
+
+			<div class="slide-4">
+				<h2>View Trends &amp; Track Results</h2>
+
+				<p>View reports that make you smarter. Newsberry will compare previous campaigns so you can improve each time you send.</p>
+				<p>Track clicks, opens, delivery, and view subscriber trends in your list.</p>
+
+				<div class="screenshot">
+					<img src="images/ss-report.jpg" alt="Screenshot of Campaign Report" title="View Trends &amp; Track Results" />
+				</div>
+			</div>
+
+			<div class="slide-5">
+
+				<h2>Serious about Deliverability</h2>
+				<p>We&#8217;re partnered with ISIPP and ReturnPath, use the industry&#8217;s leading mail delivery server from Port25, and work directly with major ISPs. We believe that delivery tools must be combined with constant education and superior customer service.</p>
+				<p><img src="images/slideshow-partners.gif" alt="Partners: ISIPP, ReturnPath, Port25" title="ISIPP, ReturnPath, Port25" /></p>
+
+				<div class="screenshot">
+					<img src="images/ss-reputation.jpg" alt="Screenshot of Reputation Report" title="Serious about deliverability" />
+				</div>
+
+				<a href="signup" class="signup">Sign up for free, now!<span></span></a>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="slideshow-nav current-1">
+		<ol>
+			<li class="slide-1"><a href="#slide-1">Welcome to Newsberry<span></span></a></li>
+
+			<li class="slide-2"><a href="#slide-2" title="Manage and Segment Lists">Manage Lists<span></span></a></li>
+			<li class="slide-3"><a href="#slide-3" title="Design &amp; Create Campaigns">Create Campaign<span></span></a></li>
+			<li class="slide-4"><a href="#slide-4" title="View Trends &amp; Track Results">Track Results<span></span></a></li>
+			<li class="slide-5"><a href="#slide-5" title="Serious about Deliverability">Improve Delivery<span></span></a></li>
+		</ol>
+	</div>
+
+	<div class="features">
+		<div class="container">
+
+			<h2>Features</h2>
+
+			<div class="row">
+
+				<div class="feature-item" id="f-deliverability">
+					<h3>Deliverability</h3>
+
+					<p>We&#8217;re accredited, whitelisted, and focused on getting to the inbox.</p>
+				</div>
+
+				<div class="feature-item" id="f-authentication">
+					<h3>Authentication</h3>
+					<p>Built-in support for SenderID, SPF, and DomainKeys.</p>
+				</div>
+
+				<div class="feature-item" id="f-templates">
+					<h3>Email Templates</h3>
+					<p>Elegant HTML design templates. Use our templates or create your own.</p>
+				</div>
+
+			</div>
+			<div class="row">
+
+				<div class="feature-item" id="f-manage-bounces">
+					<h3>Manage Bounces and Unsubscribes</h3>
+					<p>Bounces and unsubscribes are managed automatically.</p>
+				</div>
+
+				<div class="feature-item" id="f-reports">
+					<h3>Detailed Reports</h3>
+					<p>View Trends, Clicks, Opens, Delivery. Our reports will surely please you.</p>
+
+				</div>
+
+				<div class="feature-item" id="f-lists">
+					<h3>Segment Your Lists</h3>
+					<p>Target campaigns based on demographic or behavior.</p>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="news-and-testimonials">
+		<div class="container">
+
+			<div class="news">
+
+				<h2>Latest news and tips</h2>
+
+				<h3><a href="http://www.wildbit.com/blog/2009/03/17/creating-sublists-more-flexible-than-ever/">Target subscribers based on their behavior</a> &bull; New Feature</h3>
+				<p>Now you can target and segment subscribers based on who opened emails, clicked links, and which emails bounced. This new tool will help you maximize response&hellip;</p>
+
+				<h3><a href="http://www.wildbit.com/blog/2008/12/10/highrise-integration/">Highrise integration</a> &bull; New Feature</h3>
+				<p>Highrise is an elegant and simple CRM to manage contacts and track activity. With Highrise Sync enabled, Newsberry will automatically update changes from your Highrise account&hellip;</p>
+
+				<div class="more"><a href="http://help.newsberry.com">More Tips<span></span></a></div>
+			</div>
+
+			<div class="testimonial">
+
+				<h2>What our clients say&hellip;</h2>
+
+				<div class="quote">
+					<blockquote>
+
+						<p>With Newsberry I have the flexibility to segment customer groups and target them with specific information on upcoming promotions and events.</p>
+						<p>It&#8217;s a fast, simple and a cost effective way to get the word out. <span class="raquo"></span></p>
+					</blockquote>
+
+					<p class="customer">
+						<img src="images/customer-emily.jpg" alt="Emily Shaak" title="Emily Shaak" />
+						<strong>Emily Shaak</strong><br />
+
+						Cuba Libre Restaurants
+					</p>
+				</div>
+
+				<div class="quote hide">
+					<blockquote>
+						<p>Newsberry has all the functionality and none of the complexity&nbsp;&mdash; Exactly what you&#8217;d expect of Wildbit!<span class="raquo"></span></p>
+					</blockquote>
+
+					<p class="customer">
+						<img src="images/customer-andy.jpg" alt="Andy Muns" title="Emily Shaak" />
+						<strong>Andy Muns</strong><br />
+						President and CEO, Redwood Collaborative Media
+					</p>
+				</div>
+
+				<div class="more"><a href="#" id="browse-clients">Next Client<span></span></a></div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+	<p class="follow-us">Follow us on <a href="http://twitter.com/jqGrid" class="link-twitter">Twitter</a> for the latest news and updates.</p>
+</div>
+
+<div class="footer">
+	<p>
+	    <a href="about">About Us</a> <span class="sep">&bull;</span> 
+	    <a href="text-tos.html">Terms of Use &amp; Anti-Spam Policy</a> <span class="sep">&bull;</span> 
+	    <a href="text-privacy">Privacy Policy</a> <span class="sep">&bull;</span> &copy; 2009 <a href="http://wildbit.com">Trirand jqGrid, LLC</a>. All rights reserved
+	</p>
+</div>
+
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-5463047-2");
+        pageTracker._trackPageview();
+    } catch (err) { }</script>
+</body>
+</html>
+
