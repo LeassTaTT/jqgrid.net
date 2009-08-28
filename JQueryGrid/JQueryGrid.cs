@@ -15,22 +15,28 @@ namespace Trirand.Web.UI.WebControls
 {
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:jqgrid runat=server></{0}:jqgrid>")]
-    public class JQueryGrid : GridView
+    public class JQueryGrid : CompositeDataBoundControl
     {
-        JavaScriptSerializer sr;        
+        JavaScriptSerializer sr;
+        HtmlTextWriter output;
 
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            sr = new JavaScriptSerializer();
-            
+            sr = new JavaScriptSerializer();            
         }
 
         protected override void OnPreRender(EventArgs e)
         {
             base.OnPreRender(e);
             ProcessCallBack();
-        }       
+        }
+
+        protected override int CreateChildControls(IEnumerable dataSource, bool dataBinding)
+        {
+            base.CreateChildControls();
+            return 0;
+        }
 
         private void OnDataSourceViewSelectCallback(IEnumerable retrievedData)
         {
@@ -69,11 +75,13 @@ namespace Trirand.Web.UI.WebControls
                 row.cell = newData;
                 response.rows[index++] = row;
             }
+            
+            EmitResponse(sr.Serialize(response));
+        }
 
-            JavaScriptSerializer sr = new JavaScriptSerializer();
-            var result = sr.Serialize(response);
-
-            HttpContext.Current.Response.Write(result);
+        private void EmitResponse(string responseText)
+        {
+            HttpContext.Current.Response.Write(responseText);
             HttpContext.Current.Response.Flush();
             HttpContext.Current.Response.End();
         }
@@ -83,12 +91,24 @@ namespace Trirand.Web.UI.WebControls
             string nd = HttpContext.Current.Request.QueryString["nd"];
             if (!String.IsNullOrEmpty(nd))
             {   
-                GetData().Select(CreateDataSourceSelectArguments(), OnDataSourceViewSelectCallback);                
+                GetData().Select(CreateDataSourceSelectArguments(), OnDataSourceViewSelectCallback);
             }
         }
         
-        protected override void RenderContents(HtmlTextWriter output)
-        {            
+        
+
+        protected override void Render(HtmlTextWriter writer)
+        {
+            //base.Render(writer);
+            this.output = writer;
+            GetData().Select(CreateDataSourceSelectArguments(), RenderGrid);            
+        }
+
+        private void RenderGrid(IEnumerable retrievedData)
+        {
+            DataView view = (DataView)retrievedData;
+            DataTable dt = view.ToTable();
+
             output.WriteBeginTag("table");
             output.WriteAttribute("id", ClientID);
             output.WriteAttribute("class", "scroll");
@@ -104,70 +124,91 @@ namespace Trirand.Web.UI.WebControls
             output.Write(HtmlTextWriter.TagRightChar);
             output.WriteEndTag("div");
 
-            output.Write(GetStartupJavascript());
+            output.Write(GetStartupJavascript(dt));
         }
 
-        protected string GetColNames()
+        protected string GetStartupJavascript(DataTable dt)
         {
-            string[] colNames = new string[this.Columns.Count];
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<script type='text/javascript'>\n\r");            
+            sb.Append("$(document).ready(function() {");
+            sb.AppendFormat("jQuery('#{0}').jqGrid({{\n\r", ClientID);
+            sb.AppendFormat("url: '{0}?jqGridID={1}',\n\r", "default.aspx", this.ClientID);
+            sb.AppendFormat("datatype: 'json',\n\r");
+            sb.AppendFormat("colNames: {0},\n\r", GetColNames(dt));
+            sb.AppendFormat("colModel: {0},\n\r", GetColModel(dt));
+            sb.AppendFormat("viewrecords: true,\n\r", GetColModel(dt));
+            sb.AppendFormat("rowNum: 10,\n\r");
+            sb.AppendFormat("rowList: [10,20,30],\n\r");
+            sb.AppendFormat("pager: jQuery('#{0}'),\n\r", ClientID + "_pager");            
+            sb.AppendFormat("multiselect: {0},", MultiSelect.ToString().ToLower());
+            sb.AppendFormat("caption: '{0}'", "Server Control jqGrid");
+            sb.AppendFormat("}})\n\r");
+            sb.AppendFormat(".navGrid('#{0}', {{ edit: true, add: true, del: true}});", ClientID + "_pager");
+            sb.Append("});");
+            sb.Append("</script>");
 
-            for (var i = 0; i < this.Columns.Count; i++)
+            return sb.ToString();
+        }
+
+        private string GetColNames(DataTable dt)
+        {            
+            string[] colNames = new string[dt.Columns.Count];
+
+            for (var i = 0; i < dt.Columns.Count; i++)
             {
-                DataControlField field = this.Columns[i];
-                BoundField boundFiled = (BoundField)field;
-                string headerText = boundFiled.HeaderText;
-                colNames[i] = String.IsNullOrEmpty(headerText) ? boundFiled.DataField : headerText;
+                colNames[i] = dt.Columns[i].ColumnName;
             }
 
             return sr.Serialize(colNames);
         }
 
-        protected string GetColModel()
+        private string GetColModel(DataTable dt)
         {
-            ColModel[] model = new ColModel[this.Columns.Count];
+            ColModel[] model = new ColModel[dt.Columns.Count];
 
-            for (var i = 0; i < this.Columns.Count; i++)
+            for (var i = 0; i < dt.Columns.Count; i++)
             {
-                DataControlField field = this.Columns[i];
-                BoundField boundField = (BoundField) field;
-                ColModel localModel = new ColModel() { index = boundField.DataField, name = boundField.DataField, width = "100" };
-
-                model[i] = localModel;                
+                model[i] = new ColModel()
+                {
+                    index = dt.Columns[i].ColumnName,
+                    name = dt.Columns[i].ColumnName,
+                    width = "100"
+                };
             }
 
             return sr.Serialize(model);
         }
 
-
-        protected string GetStartupJavascript()
+        [DefaultValue(false)]
+        public bool MultiSelect
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("<script type='text/javascript'>\n\r");            
-            sb.Append("$(document).ready(function() {{");
-            sb.AppendFormat("jQuery('#{0}').jqGrid({{\n\r", ClientID);
-            sb.AppendFormat("url: '{0}',\n\r", "default.aspx");
-            sb.AppendFormat("datatype: 'json',\n\r");
-            sb.AppendFormat("colNames: {0},\n\r", GetColNames());
-            sb.AppendFormat("colModel: {0},\n\r", GetColModel());
-            sb.AppendFormat("rowNum: 10,\n\r", GetColModel());
-            sb.AppendFormat("rowList: [10,20,30]\n\r,", GetColModel());
-            sb.AppendFormat("pager: jQuery('#{0}'),", ClientID + "_pager");
-            sb.AppendFormat("height: 300,");
-            sb.AppendFormat("multiselect: true,");
-            sb.AppendFormat("caption: '{0}'", "Server Control jqGrid");
-            sb.AppendFormat("}})\n\r");
-            sb.AppendFormat(".navGrid('#{0}', {{ edit: true, add: true, del: true}});", ClientID + "_pager");
-            sb.Append("}});");
-            sb.Append("</script>");
+            get
+            {
+                object o = ViewState["MultiSelect"];
+                return o != null ? (bool)o : false;
+            }
+            set
+            {
+                ViewState["MultiSelect"] = value;
+            }
+        }
 
-            return sb.ToString();
-        }        
-    }
+        [DefaultValue("")]
+        public string Caption
+        {
+            get
+            {
+                object o = ViewState["Caption"];
+                return o != null ? (string)o : string.Empty;
+            }
+            set
+            {
+                ViewState["MultiSelect"] = value;
+            }
+        }
+    }   
 
-    public class ColModel
-    {
-        public string name { get; set; }
-        public string index { get; set; }
-        public string width { get; set; }        
-    }
+
+    
 }

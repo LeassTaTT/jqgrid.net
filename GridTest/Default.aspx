@@ -43,7 +43,7 @@
     <div id="pager2" class="scroll" style="text-align:center;"></div>
 
 
-    <script type="text/javascript">
+   <script type="text/javascript">
 
         $(document).ready(function() {
             jQuery("#list2").jqGrid({
@@ -71,23 +71,15 @@
         });
     
     </script>
-      
     
     
     
     
     </div>
-    <cc1:JQueryGrid ID="JQGrid1" runat="server" AutoGenerateColumns="false">
-        <Columns>
-            <asp:BoundField DataField="id" />
-            <asp:BoundField DataField="invdate" />
-            <asp:BoundField DataField="name" />
-            <asp:BoundField DataField="amount" />
-            <asp:BoundField DataField="tax" />
-            <asp:BoundField DataField="total" />
-            <asp:BoundField DataField="note" />
-        </Columns>
+    <cc1:JQueryGrid ID="JQGrid1" runat="server"  >        
     </cc1:JQueryGrid>
+    
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ></asp:SqlDataSource>
     
     </form>
 </body>

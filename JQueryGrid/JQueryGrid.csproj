@@ -51,6 +51,7 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColModel.cs" />
     <Compile Include="JQueryGrid.cs" />
     <Compile Include="JsonResponse.cs" />
     <Compile Include="JsonRow.cs" />
