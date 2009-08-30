@@ -319,7 +319,6 @@ namespace Trirand.Web.UI.WebControls
             }
         }
 
-
         [DefaultValue(false)]
         public bool MultiSelect
         {
@@ -402,14 +401,6 @@ namespace Trirand.Web.UI.WebControls
             {
                 base.Events.RemoveHandler(EventSearched, value);
             }
-        }
- 
-
- 
-
- 
-    }   
-
-
-    
+        } 
+    }       
 }
