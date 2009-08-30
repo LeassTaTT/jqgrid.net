@@ -43,7 +43,7 @@
     <div id="pager2" class="scroll" style="text-align:center;"></div>
 
 
-   <script type="text/javascript">
+  <%-- <script type="text/javascript">
 
         $(document).ready(function() {
             jQuery("#list2").jqGrid({
@@ -70,13 +70,13 @@
             }).navGrid('#pager2', { edit: false, add: false, del: false });
         });
     
-    </script>
+    </script>--%>
     
     
     
     
     </div>
-    <cc1:JQueryGrid ID="JQGrid1" runat="server"  >        
+    <cc1:JQueryGrid ID="JQGrid1" runat="server" onsorting="JQGrid1_Sorting"  >        
     </cc1:JQueryGrid>
     
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ></asp:SqlDataSource>

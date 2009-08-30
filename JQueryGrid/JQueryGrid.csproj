@@ -52,10 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColModel.cs" />
+    <Compile Include="EventArgs\JQGridSearchEventArgs.cs" />
+    <Compile Include="EventArgs\JQGridSortEventArgs.cs" />
     <Compile Include="JQueryGrid.cs" />
     <Compile Include="JsonResponse.cs" />
     <Compile Include="JsonRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchOperation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

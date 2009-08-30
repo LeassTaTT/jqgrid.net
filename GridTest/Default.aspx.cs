@@ -11,20 +11,7 @@ namespace GridTest
 {
     public partial class _Default : System.Web.UI.Page
     {
-        public class JsonResponse
-        {
-            public int page { get; set; }
-            public int total { get; set; }
-            public int records { get; set; }
-            public JsonRow[] rows { get; set; }
-        }
-
-        public class JsonRow
-        {
-            public string id;
-            public object[] cell { get; set; }
-        }
-
+        
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -89,8 +76,8 @@ namespace GridTest
             DataTable dt = new DataTable();
             dt.Columns.Add("id");
             dt.Columns.Add("invdate");
-            dt.Columns.Add("name");
-            dt.Columns.Add("amount");
+            dt.Columns.Add("name", typeof(int));
+            dt.Columns.Add("amount", typeof(double));
             dt.Columns.Add("tax");
             dt.Columns.Add("total");
             dt.Columns.Add("note");
@@ -105,7 +92,7 @@ namespace GridTest
             
             for (int i=0; i<100; i++)
             {                
-                dt.Rows.Add(new object [] { "a" + i.ToString(), "a", "a", "a", "a", "a", "a" });
+                dt.Rows.Add(new object [] { "a" + i.ToString(), "a", i, Convert.ToDouble(i), "a", "a", "a" });
             }
 
             return dt;
@@ -115,6 +102,12 @@ namespace GridTest
         {
             JQGrid1.DataSource = GetData();
             JQGrid1.DataBind();
+        }
+       
+
+        protected void JQGrid1_Sorting(object sender, Trirand.Web.UI.WebControls.JQGridSortEventArgs e)
+        {
+
         }
     }
 }
