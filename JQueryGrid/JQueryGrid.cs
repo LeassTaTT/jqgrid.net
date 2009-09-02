@@ -15,7 +15,7 @@ namespace Trirand.Web.UI.WebControls
 {
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:jqgrid runat=server></{0}:jqgrid>")]
-    public class JQueryGrid : CompositeDataBoundControl
+    public class JQueryGrid : GridView
     {
         JavaScriptSerializer _sr;
         HtmlTextWriter _output;
@@ -26,7 +26,6 @@ namespace Trirand.Web.UI.WebControls
 
         public delegate void JQGridSortEventHandler(object sender, JQGridSortEventArgs e);
         public delegate void JQGridSearchEventHandler(object sender, JQGridSearchEventArgs e);
-
 
         static JQueryGrid()
         {    
@@ -72,7 +71,7 @@ namespace Trirand.Web.UI.WebControls
             string sortDirection = HttpContext.Current.Request.QueryString["sord"];
             string search = HttpContext.Current.Request.QueryString["_search"];
 
-            DataView view = (DataView)retrievedData;
+            DataView view = GetDataTableFromIEnumerable(retrievedData).DefaultView;
 
             PerformSort(view, sortExpression, sortDirection);
             PerformSearch(view, search);
@@ -130,34 +129,18 @@ namespace Trirand.Web.UI.WebControls
 
         private void PerformSearch(DataView view, string search)
         {
-            if (!String.IsNullOrEmpty(search) && Convert.ToBoolean(search))
-            {
-                // search here                
-                JQGridSearchEventArgs args = new JQGridSearchEventArgs()
-                {
-                    SearchColumn = HttpContext.Current.Request.QueryString["searchField"],
-                    SearchString = HttpContext.Current.Request.QueryString["searchString"],
-                    SearchOperation = GetSearchOperationFromString(HttpContext.Current.Request.QueryString["searchOper"])
-                };
-                OnSearching(args);
-                if (!args.Cancel)
-                {
-                    switch (args.SearchOperation)
-                    {
-                        case SearchOperation.IsEqualTo:
-                            view.RowFilter = String.Format("[{0}] = {1}", args.SearchColumn, args.SearchString);
-                            break;
-                        default:
-                            break;
-                    }
-                    // do the actual search logic
-                }
-                OnSearched(new EventArgs());
-            }
+            new Searching(this,HttpContext.Current.Request.QueryString["searchField"],
+                               HttpContext.Current.Request.QueryString["searchString"],
+                               HttpContext.Current.Request.QueryString["searchOper"])
+            .PerformSearch(view, search);            
         }
 
         private void EmitResponse(string responseText)
         {
+            // Clears and flushes the response buffer and ends the response. This way, we guarantee that only our own
+            // JSON response gets sent to the client -- no ASP.NET internal responses interfere with that
+            // Ending the response ends the Page lifecycle at the event where it is called.
+            HttpContext.Current.Response.Clear();
             HttpContext.Current.Response.Write(responseText);
             HttpContext.Current.Response.Flush();
             HttpContext.Current.Response.End();
@@ -174,15 +157,16 @@ namespace Trirand.Web.UI.WebControls
 
         protected override void Render(HtmlTextWriter writer)
         {
-            //base.Render(writer);
+            //IDataSource s = this.GetDataSource();            
+            // store the HtmlTextWriter ASP.NET uses for rendering. Needed later by the RenderGrid callback.
             this._output = writer;
             GetData().Select(CreateDataSourceSelectArguments(), RenderGrid);            
         }
 
         private void RenderGrid(IEnumerable retrievedData)
         {
-            DataView view = (DataView)retrievedData;
-            DataTable dt = view.ToTable();
+            DataTable dt = GetDataTableFromIEnumerable(retrievedData);
+            DataView view = dt.DefaultView;                       
 
             _output.WriteBeginTag("table");
             _output.WriteAttribute("id", ClientID);
@@ -208,7 +192,7 @@ namespace Trirand.Web.UI.WebControls
             sb.Append("<script type='text/javascript'>\n\r");            
             sb.Append("$(document).ready(function() {");
             sb.AppendFormat("jQuery('#{0}').jqGrid({{\n\r", ClientID);
-            sb.AppendFormat("url: '{0}?jqGridID={1}',\n\r", "default.aspx", this.ClientID);
+            sb.AppendFormat("url: '{0}?jqGridID={1}',\n\r",  HttpContext.Current.Request.FilePath, this.ClientID);
             sb.AppendFormat("datatype: 'json',\n\r");
             sb.AppendFormat("colNames: {0},\n\r", GetColNames(dt));
             sb.AppendFormat("colModel: {0},\n\r", GetColModel(dt));
@@ -224,30 +208,7 @@ namespace Trirand.Web.UI.WebControls
             sb.Append("</script>");
 
             return sb.ToString();
-        }
-
-        private SearchOperation GetSearchOperationFromString(string searchOperation)
-        {
-            switch (searchOperation)
-            {
-                case "eq": return SearchOperation.IsEqualTo;
-                case "ne": return SearchOperation.IsNotEqualTo;
-                case "lt": return SearchOperation.IsLessThan;
-                case "le": return SearchOperation.IsLessOrEqualTo;
-                case "gt": return SearchOperation.IsGreaterThan;
-                case "ge": return SearchOperation.IsGreaterOrEqualTo;
-                case "in": return SearchOperation.IsIn;
-                case "ni": return SearchOperation.IsNotIn;
-                case "bw": return SearchOperation.BeginsWith;
-                case "bn": return SearchOperation.DoesNotEndWith;
-                case "ew": return SearchOperation.EndsWith;
-                case "en": return SearchOperation.DoesNotEndWith;
-                case "cn": return SearchOperation.Contains;
-                case "nc": return SearchOperation.DoesNotContain;
-                default:
-                    throw new Exception("Search operation not known: " + searchOperation);                    
-            }
-        }
+        }        
 
         private string GetColNames(DataTable dt)
         {            
@@ -278,6 +239,50 @@ namespace Trirand.Web.UI.WebControls
             return _sr.Serialize(model);
         }
 
+        private DataTable GetDataTableFromIEnumerable(IEnumerable en)
+        {            
+            DataView view;
+            DataTable dt;
+            
+            view = en as DataView;
+            if (view != null)
+            {
+                dt = view.ToTable();
+            }
+            else
+            {
+                dt = ObtainDataTableFromIEnumerable(en);
+                
+            }
+
+            return dt;
+        }
+
+        private DataTable ObtainDataTableFromIEnumerable(IEnumerable ien)
+        {
+            DataTable dt = new DataTable();
+            foreach (object obj in ien)
+            {
+                Type t = obj.GetType();
+                PropertyInfo[] pis = t.GetProperties();
+                if (dt.Columns.Count == 0)
+                {
+                    foreach (PropertyInfo pi in pis)
+                    {
+                        dt.Columns.Add(pi.Name, pi.PropertyType);
+                    }
+                }
+                DataRow dr = dt.NewRow();
+                foreach (PropertyInfo pi in pis)
+                {
+                    object value = pi.GetValue(obj, null);
+                    dr[pi.Name] = value;
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
+        }
+
         protected virtual void OnSorting(JQGridSortEventArgs e)
         {
             bool isBoundUsingDataSourceID = base.IsBoundUsingDataSourceID;
@@ -286,10 +291,10 @@ namespace Trirand.Web.UI.WebControls
             {
                 handler(this, e);
             }
-            else if (!isBoundUsingDataSourceID && !e.Cancel)
-            {
-                throw new HttpException("Unhandled event");
-            }
+            //else if (!isBoundUsingDataSourceID && !e.Cancel)
+            //{
+            //    throw new HttpException("Unhandled event");
+            //}
         }
 
         protected virtual void OnSorted(EventArgs e)
@@ -301,7 +306,7 @@ namespace Trirand.Web.UI.WebControls
             }
         }
 
-        protected virtual void OnSearching(JQGridSearchEventArgs e)
+        internal protected virtual void OnSearching(JQGridSearchEventArgs e)
         {
             JQGridSearchEventHandler handler = (JQGridSearchEventHandler)base.Events[EventSearching];
             if (handler != null)
@@ -310,7 +315,7 @@ namespace Trirand.Web.UI.WebControls
             }            
         }
 
-        protected virtual void OnSearched(EventArgs e)
+        internal protected virtual void OnSearched(EventArgs e)
         {
             EventHandler handler = (EventHandler)base.Events[EventSearched];
             if (handler != null)

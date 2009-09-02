@@ -54,6 +54,7 @@
     <Compile Include="ColModel.cs" />
     <Compile Include="EventArgs\JQGridSearchEventArgs.cs" />
     <Compile Include="EventArgs\JQGridSortEventArgs.cs" />
+    <Compile Include="Searching.cs" />
     <Compile Include="JQueryGrid.cs" />
     <Compile Include="JsonResponse.cs" />
     <Compile Include="JsonRow.cs" />

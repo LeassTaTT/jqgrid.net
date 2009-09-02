@@ -53,7 +53,6 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Default.aspx" />
     <Content Include="js\i18n\grid.locale-bg.js" />
     <Content Include="js\i18n\grid.locale-en.js" />
     <Content Include="js\jquery-ui-1.7.1.custom.min.js" />
@@ -101,19 +100,50 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="examples\codetabs.ascx.cs">
+      <DependentUpon>codetabs.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="examples\codetabs.ascx.designer.cs">
+      <DependentUpon>codetabs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="examples\loading_data\datatable\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examples\loading_data\datatable\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examples\loading_data\objectdatasource\DataAccess.cs" />
+    <Compile Include="examples\loading_data\objectdatasource\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examples\loading_data\objectdatasource\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examples\loading_data\objectdatasource\People.cs" />
+    <Compile Include="examples\loading_data\objectdatasource\PeopleComparer.cs" />
+    <Compile Include="examples\loading_data\sqldatasource\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examples\loading_data\sqldatasource\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examples\loading_data\xml\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examples\loading_data\xml\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jqgrid.aspx.cs">
+      <DependentUpon>jqgrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="jqgrid.aspx.designer.cs">
+      <DependentUpon>jqgrid.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -133,8 +163,19 @@
     <Content Include="css\ie.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\site.css" />
-    <Content Include="index.aspx" />
+    <Content Include="examples\codetabs.ascx" />
+    <Content Include="examples\loading_data\datatable\default.aspx" />
+    <Content Include="examples\loading_data\datatable\info.txt" />
+    <Content Include="examples\loading_data\objectdatasource\default.aspx" />
+    <Content Include="examples\loading_data\objectdatasource\info.txt" />
+    <Content Include="examples\loading_data\sqldatasource\default.aspx" />
+    <Content Include="examples\loading_data\sqldatasource\info.txt" />
+    <Content Include="examples\loading_data\xml\data.xml" />
+    <Content Include="examples\loading_data\xml\default.aspx" />
+    <Content Include="examples\loading_data\xml\info.txt" />
+    <Content Include="jqgrid.aspx" />
     <Content Include="Site.Master" />
+    <Content Include="tree.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JQueryGrid\JQueryGrid.csproj">
@@ -160,7 +201,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3248</DevelopmentServerPort>
+          <DevelopmentServerPort>1147</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
