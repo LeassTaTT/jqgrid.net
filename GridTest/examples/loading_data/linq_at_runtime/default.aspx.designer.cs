@@ -8,19 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GridTest.examples.loading_data.linqdatasource {
+namespace GridTest.examples.loading_data.linq_at_runtime {
     
     
     public partial class _default {
-        
-        /// <summary>
-        /// Head1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
         
         /// <summary>
         /// form1 control.
@@ -32,30 +23,21 @@ namespace GridTest.examples.loading_data.linqdatasource {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// LinqDataSourceGrid control.
+        /// LinqAtRuntimeGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Trirand.Web.UI.WebControls.JQueryGrid LinqDataSourceGrid;
+        protected global::Trirand.Web.UI.WebControls.JQueryGrid LinqAtRuntimeGrid;
         
         /// <summary>
-        /// LinqDataSourceTabs control.
+        /// LinqAtRuntimeTabs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GridTest.examples.codetabs LinqDataSourceTabs;
-        
-        /// <summary>
-        /// LinqDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinqDataSource LinqDataSource1;
+        protected global::GridTest.examples.codetabs LinqAtRuntimeTabs;
     }
 }

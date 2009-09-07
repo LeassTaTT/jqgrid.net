@@ -15,7 +15,7 @@ namespace Trirand.Web.UI.WebControls
 {
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:jqgrid runat=server></{0}:jqgrid>")]
-    public class JQueryGrid : GridView
+    public class JQueryGrid : CompositeDataBoundControl
     {
         JavaScriptSerializer _sr;
         HtmlTextWriter _output;
@@ -269,14 +269,21 @@ namespace Trirand.Web.UI.WebControls
                 {
                     foreach (PropertyInfo pi in pis)
                     {
-                        dt.Columns.Add(pi.Name, pi.PropertyType);
+                        Type pt = pi.PropertyType;
+                        if(pt.IsGenericType && pt.GetGenericTypeDefinition()==typeof(Nullable<>))
+                            pt = Nullable.GetUnderlyingType(pt);
+                        
+                        dt.Columns.Add(pi.Name, pt);           
                     }
                 }
                 DataRow dr = dt.NewRow();
                 foreach (PropertyInfo pi in pis)
                 {
                     object value = pi.GetValue(obj, null);
-                    dr[pi.Name] = value;
+                    if (value != null)
+                        dr[pi.Name] = value;
+                    else
+                        dr[pi.Name] = System.DBNull.Value;
                 }
                 dt.Rows.Add(dr);
             }

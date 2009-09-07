@@ -20,28 +20,28 @@ namespace GridTest.examples
             string csharpPath = Server.MapPath(currentFolderPath + "/" + "default.aspx.cs");
             string vbnetPath = Server.MapPath(currentFolderPath + "/" + "DefaultVBNET.aspx.vb");
 
-            infoContents.InnerHtml = ReplaceCodeForHtml(ReadFileContents(infoPath));
-            aspxContents.InnerHtml = EncodeCodeForHtml(ReadFileContents(aspxPath));
-            csharpContents.InnerHtml = EncodeCodeForHtml(ReadFileContents(csharpPath));
+            DescriptionCode.InnerHtml = ReplaceCodeForHtml(ReadFileContents(infoPath));
+            ASPXCode.InnerHtml = EncodeCodeForHtml(ReadFileContents(aspxPath));
+            CSharpCode.InnerHtml = EncodeCodeForHtml(ReadFileContents(csharpPath));
 
             if (File.Exists(vbnetPath))
             {
                 //csharpContents.InnerHtml = EncodeCodeForHtml(ReadFileContents(csharpPath));
-                vbnetContents.InnerHtml = EncodeCodeForHtml(ReadFileContents(vbnetPath));
+                //vbnetContents.InnerHtml = EncodeCodeForHtml(ReadFileContents(vbnetPath));
             }
             else
             {
                 //csharpContents.InnerHtml = "There is no C# code-behind for this example. Everything in this example is achieved declaratively. Please, review the ASPX and Info tabs for more details.";
-                vbnetContents.InnerHtml = "There is no VB.NET code-behind for this example. Everything in this example is achieved declaratively. Please, review the ASPX and Info tabs for more details.";
+                //vbnetContents.InnerHtml = "There is no VB.NET code-behind for this example. Everything in this example is achieved declaratively. Please, review the ASPX and Info tabs for more details.";
             }
 
-            string codeArrayScript = @"
-                                    <script type='text/javascript'>                                    
-                                    var contentID = ['{0}','{1}','{2}','{3}'];
-                                    </script>
-                                    ";
-            codeArrayScript = String.Format(codeArrayScript, infoContents.ClientID, aspxContents.ClientID, csharpContents.ClientID, vbnetContents.ClientID);
-            Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "codeArray", codeArrayScript);
+            //string codeArrayScript = @"
+                                    //<script type='text/javascript'>                                    
+                                    //var contentID = ['{0}','{1}','{2}','{3}'];
+                                    //</script>
+                                    //";
+            //codeArrayScript = String.Format(codeArrayScript, infoContents.ClientID, aspxContents.ClientID, csharpContents.ClientID, vbnetContents.ClientID);
+            //Page.ClientScript.RegisterClientScriptBlock(typeof(Page), this.ClientID + "codeArray", codeArrayScript);
         }
 
         protected string ReadFileContents(string filePath)

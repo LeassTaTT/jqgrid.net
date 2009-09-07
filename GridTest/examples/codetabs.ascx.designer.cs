@@ -14,39 +14,66 @@ namespace GridTest.examples {
     public partial class codetabs {
         
         /// <summary>
-        /// infoContents control.
+        /// tabs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infoContents;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tabs;
         
         /// <summary>
-        /// aspxContents control.
+        /// DescriptionContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl aspxContents;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DescriptionContent;
         
         /// <summary>
-        /// csharpContents control.
+        /// DescriptionCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl csharpContents;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DescriptionCode;
         
         /// <summary>
-        /// vbnetContents control.
+        /// ASPXContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl vbnetContents;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ASPXContent;
+        
+        /// <summary>
+        /// ASPXCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ASPXCode;
+        
+        /// <summary>
+        /// CSharpContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CSharpContent;
+        
+        /// <summary>
+        /// CSharpCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CSharpCode;
     }
 }

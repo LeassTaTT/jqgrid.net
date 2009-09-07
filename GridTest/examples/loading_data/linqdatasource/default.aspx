@@ -17,28 +17,11 @@
     
         
     <trirand:JQueryGrid runat="server" ID="LinqDataSourceGrid" 
-        DataSourceID="LinqDataSource1" AutoGenerateColumns="False">
-        <Columns>
-            <asp:TemplateField>
-                <ItemTemplate>
-                    ds
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" 
-                SortExpression="ID"  />
-            <asp:BoundField DataField="Email" HeaderText="Email" ReadOnly="True" 
-                SortExpression="Email" />
-            <asp:BoundField DataField="Password" HeaderText="Password" ReadOnly="True" 
-                SortExpression="Password" />
-            <asp:BoundField DataField="Role" HeaderText="Role" ReadOnly="True" 
-                SortExpression="Role" />
-            <asp:BoundField DataField="RegistrationDate" HeaderText="RegistrationDate" 
-                ReadOnly="True" SortExpression="RegistrationDate" />
-        </Columns>
+        DataSourceID="LinqDataSource1">        
     </trirand:JQueryGrid>
     
     <br /><br />
-    <trirand:codetabs runat="server" id="codetabs1"></trirand:codetabs> 
+    <trirand:codetabs runat="server" id="LinqDataSourceTabs"></trirand:codetabs> 
  
     
     <asp:LinqDataSource ID="LinqDataSource1" runat="server" 

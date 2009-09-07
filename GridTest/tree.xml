@@ -9,5 +9,5 @@
     <row><cell>4</cell><cell>ObjectDataSource</cell><cell>examples/loading_data/objectdatasource/default.aspx</cell><cell>1</cell><cell>6</cell><cell>7</cell><cell>true</cell><cell>true</cell></row>
     <row><cell>5</cell><cell>SqlDataSource</cell><cell>examples/loading_data/sqldatasource/default.aspx</cell><cell>1</cell><cell>8</cell><cell>9</cell><cell>true</cell><cell>true</cell></row>
     <row><cell>6</cell><cell>LinqDataSource</cell><cell>examples/loading_data/linqdatasource/default.aspx</cell><cell>1</cell><cell>10</cell><cell>11</cell><cell>true</cell><cell>true</cell></row>    
-    <row><cell>7</cell><cell>Linq at runtime</cell><cell>examples/loading_data/linqatruntime/default.aspx</cell><cell>1</cell><cell>12</cell><cell>13</cell><cell>true</cell><cell>true</cell></row>    
+    <row><cell>7</cell><cell>Linq at runtime</cell><cell>examples/loading_data/linq_at_runtime/default.aspx</cell><cell>1</cell><cell>12</cell><cell>13</cell><cell>true</cell><cell>true</cell></row>    
 </rows>

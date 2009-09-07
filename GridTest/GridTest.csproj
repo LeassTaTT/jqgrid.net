@@ -129,6 +129,13 @@
     <Compile Include="examples\loading_data\linqdatasource\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="examples\loading_data\linq_at_runtime\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examples\loading_data\linq_at_runtime\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="examples\loading_data\objectdatasource\DataAccess.cs" />
     <Compile Include="examples\loading_data\objectdatasource\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -188,6 +195,8 @@
     <Content Include="examples\loading_data\datatable\info.txt" />
     <Content Include="examples\loading_data\linqdatasource\default.aspx" />
     <Content Include="examples\loading_data\linqdatasource\info.txt" />
+    <Content Include="examples\loading_data\linq_at_runtime\default.aspx" />
+    <Content Include="examples\loading_data\linq_at_runtime\info.txt" />
     <Content Include="examples\loading_data\objectdatasource\default.aspx" />
     <Content Include="examples\loading_data\objectdatasource\info.txt" />
     <Content Include="examples\loading_data\sqldatasource\default.aspx" />
