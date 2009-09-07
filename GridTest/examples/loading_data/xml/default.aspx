@@ -4,24 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
-    <title></title>    
-    <script src="/js/jquery.js" type="text/javascript"></script>
-    <script src="/js/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
-    <script src="/js/jquery.layout.js" type="text/javascript"></script>
-    <script src="/js/i18n/grid.locale-en.js" type="text/javascript"></script>
-    <script src="/js/jquery.jqGrid.min.js" type="text/javascript"></script>
-    <script src="/js/jquery.tablednd.js" type="text/javascript"></script>
-    <script src="/js/jquery.contextmenu.js" type="text/javascript"></script>  
+    <title></title>        
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
        Binding to XML
-       <trirand:JQueryGrid ID="JQGrid1" runat="server">
+       <trirand:JQueryGrid ID="XmlGrid" runat="server">
        </trirand:JQueryGrid>
        
        <br /><br />
-       <trirand:codetabs runat="server" id="codetabs1"></trirand:codetabs>    
+       <trirand:codetabs runat="server" id="XmlTabs"></trirand:codetabs>    
     </div>
     </form>
 </body>

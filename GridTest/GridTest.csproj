@@ -38,6 +38,9 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -100,6 +103,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dbml\UserDataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataClasses.dbml</DependentUpon>
+    </Compile>
     <Compile Include="examples\codetabs.ascx.cs">
       <DependentUpon>codetabs.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,6 +120,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="examples\loading_data\datatable\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examples\loading_data\linqdatasource\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examples\loading_data\linqdatasource\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="examples\loading_data\objectdatasource\DataAccess.cs" />
@@ -155,6 +170,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="dbml\UserDataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>UserDataClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="NorthwindDataClasses.dbml.layout">
       <DependentUpon>NorthwindDataClasses.dbml</DependentUpon>
     </None>
@@ -166,6 +186,8 @@
     <Content Include="examples\codetabs.ascx" />
     <Content Include="examples\loading_data\datatable\default.aspx" />
     <Content Include="examples\loading_data\datatable\info.txt" />
+    <Content Include="examples\loading_data\linqdatasource\default.aspx" />
+    <Content Include="examples\loading_data\linqdatasource\info.txt" />
     <Content Include="examples\loading_data\objectdatasource\default.aspx" />
     <Content Include="examples\loading_data\objectdatasource\info.txt" />
     <Content Include="examples\loading_data\sqldatasource\default.aspx" />
@@ -182,6 +204,14 @@
       <Project>{B6610FBA-5348-42DE-A1F8-13E08E5C6385}</Project>
       <Name>JQueryGrid</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbml\UserDataClasses.dbml.layout">
+      <DependentUpon>UserDataClasses.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="js\site\" />

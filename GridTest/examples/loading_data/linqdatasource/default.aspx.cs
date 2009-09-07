@@ -4,19 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 
-namespace GridTest.examples.loading_data.xml
+namespace GridTest.examples.loading_data.linqdatasource
 {
     public partial class _default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            ds.ReadXml(Server.MapPath("~/examples/loading_data/xml/data.xml"));
 
-            XmlGrid.DataSource = ds;
-            XmlGrid.DataBind();
         }
     }
 }

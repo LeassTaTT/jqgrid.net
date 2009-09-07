@@ -32,21 +32,21 @@ namespace GridTest.examples.loading_data.xml {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// JQGrid1 control.
+        /// XmlGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Trirand.Web.UI.WebControls.JQueryGrid JQGrid1;
+        protected global::Trirand.Web.UI.WebControls.JQueryGrid XmlGrid;
         
         /// <summary>
-        /// codetabs1 control.
+        /// XmlTabs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GridTest.examples.codetabs codetabs1;
+        protected global::GridTest.examples.codetabs XmlTabs;
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GridTest.examples.loading_data.sqldatasource {
+namespace GridTest.examples.loading_data.linqdatasource {
     
     
     public partial class _default {
@@ -32,30 +32,30 @@ namespace GridTest.examples.loading_data.sqldatasource {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// LinqDataSourceGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::Trirand.Web.UI.WebControls.JQueryGrid LinqDataSourceGrid;
         
         /// <summary>
-        /// SqlDataSourceGrid control.
+        /// codetabs1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Trirand.Web.UI.WebControls.JQueryGrid SqlDataSourceGrid;
+        protected global::GridTest.examples.codetabs codetabs1;
         
         /// <summary>
-        /// SqlDataSourceTabs control.
+        /// LinqDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GridTest.examples.codetabs SqlDataSourceTabs;
+        protected global::System.Web.UI.WebControls.LinqDataSource LinqDataSource1;
     }
 }

@@ -39,11 +39,9 @@ namespace GridTest.examples.loading_data.datatable
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            JQGrid1.DataSource = GetData();
-            JQGrid1.DataBind();
-        }
-
-     
+            DataTableGrid.DataSource = GetData();
+            DataTableGrid.DataBind();
+        }     
         
     }
 }
