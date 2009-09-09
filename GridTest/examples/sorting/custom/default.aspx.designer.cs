@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GridTest.examples.loading_data.sqldatasource {
+namespace GridTest.examples.sorting.custom {
     
     
     public partial class _default {
@@ -32,30 +32,21 @@ namespace GridTest.examples.loading_data.sqldatasource {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// CustomSortingGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::Trirand.Web.UI.WebControls.JQueryGrid CustomSortingGrid;
         
         /// <summary>
-        /// AutomaticSortingGrid control.
+        /// CustomSortingTabs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Trirand.Web.UI.WebControls.JQueryGrid AutomaticSortingGrid;
-        
-        /// <summary>
-        /// AutomaticSortingTabs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::GridTest.examples.codetabs AutomaticSortingTabs;
+        protected global::GridTest.examples.codetabs CustomSortingTabs;
     }
 }

@@ -160,6 +160,27 @@
     <Compile Include="examples\loading_data\xml\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="examples\sorting\automatic\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examples\sorting\automatic\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examples\sorting\custom\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examples\sorting\custom\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="examples\sorting\disable\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="examples\sorting\disable\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="jqgrid.aspx.cs">
       <DependentUpon>jqgrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -204,6 +225,11 @@
     <Content Include="examples\loading_data\xml\data.xml" />
     <Content Include="examples\loading_data\xml\default.aspx" />
     <Content Include="examples\loading_data\xml\info.txt" />
+    <Content Include="examples\sorting\automatic\default.aspx" />
+    <Content Include="examples\sorting\automatic\info.txt" />
+    <Content Include="examples\sorting\custom\default.aspx" />
+    <Content Include="examples\sorting\custom\info.txt" />
+    <Content Include="examples\sorting\disable\default.aspx" />
     <Content Include="jqgrid.aspx" />
     <Content Include="Site.Master" />
     <Content Include="tree.xml" />
@@ -240,7 +266,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1147</DevelopmentServerPort>
+          <DevelopmentServerPort>4940</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

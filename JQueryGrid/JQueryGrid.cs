@@ -49,7 +49,7 @@ namespace Trirand.Web.UI.WebControls
 
         protected override int CreateChildControls(IEnumerable dataSource, bool dataBinding)
         {
-            base.CreateChildControls();
+            //base.CreateChildControls();
             return 0;
         }
 
