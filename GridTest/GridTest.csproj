@@ -230,6 +230,7 @@
     <Content Include="examples\sorting\custom\default.aspx" />
     <Content Include="examples\sorting\custom\info.txt" />
     <Content Include="examples\sorting\disable\default.aspx" />
+    <Content Include="examples\sorting\disable\info.txt" />
     <Content Include="jqgrid.aspx" />
     <Content Include="Site.Master" />
     <Content Include="tree.xml" />

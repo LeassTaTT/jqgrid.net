@@ -9,6 +9,7 @@ namespace Trirand.Web.UI.WebControls
     {
         public string name { get; set; }
         public string index { get; set; }
-        public string width { get; set; }
+        public int width { get; set; }
+        public bool sortable { get; set; }
     }
 }

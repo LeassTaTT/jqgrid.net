@@ -19,8 +19,17 @@
         SelectCommand="SELECT [ID], [Email], [Password], [Role], [RegistrationDate] FROM [User]"></asp:SqlDataSource>
         
         
-    <trirand:JQGrid runat="server" ID="SqlDataSourceGrid" DataSourceID="SqlDataSource1"></trirand:JQGrid>
-    
+    <trirand:JQGrid runat="server" ID="SqlDataSourceGrid" DataSourceID="SqlDataSource1">
+        <Columns>
+            <trirand:JQGridColumn Sortable="false" DataField="ID" />
+            <trirand:JQGridColumn Sortable="false" DataField="Email"  />
+            <trirand:JQGridColumn Sortable="false" DataField="Password"  />
+            <trirand:JQGridColumn Sortable="false" DataField="Role"  />
+            <trirand:JQGridColumn Sortable="false" DataField="RegistrationData"  />
+        </Columns>
+        
+    </trirand:JQGrid>    
+
     <br /><br />
     <trirand:codetabs runat="server" id="SqlDataSourceTabs"></trirand:codetabs> 
     

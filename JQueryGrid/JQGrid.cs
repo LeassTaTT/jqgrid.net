@@ -230,15 +230,30 @@ namespace Trirand.Web.UI.WebControls
 
             for (var i = 0; i < dt.Columns.Count; i++)
             {
+                JQGridColumn column = GetColumnFromDataTable(dt.Columns[i].ColumnName);
                 model[i] = new ColModel()
                 {
                     index = dt.Columns[i].ColumnName,
                     name = dt.Columns[i].ColumnName,
-                    width = "100"
+                    width = column != null ? column.Width : 150,
+                    sortable = column != null ? column.Sortable : true
                 };
             }
 
             return _sr.Serialize(model);
+        }
+
+        private JQGridColumn GetColumnFromDataTable(string columnName)
+        {
+            foreach (JQGridColumn column in Columns)
+            {
+                if (column.DataField == columnName)
+                {
+                    return column;
+                }
+            }
+
+            return null;
         }
 
         private DataTable GetDataTableFromIEnumerable(IEnumerable en)

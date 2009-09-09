@@ -12,7 +12,7 @@
     <row><cell>7</cell><cell>Linq at runtime</cell><cell>examples/loading_data/linq_at_runtime/default.aspx</cell><cell>1</cell><cell>12</cell><cell>13</cell><cell>true</cell><cell>true</cell></row>    
     <row><cell>8</cell><cell>Sorting</cell><cell></cell><cell>0</cell><cell>13</cell><cell>20</cell><cell>false</cell><cell>false</cell></row>
     <row><cell>9</cell><cell>Automatic Sorting</cell><cell>examples/sorting/automatic/default.aspx</cell><cell>1</cell><cell>13</cell><cell>14</cell><cell>true</cell><cell>true</cell></row>
-    <row><cell>10</cell><cell>Custom Sorting</cell><cell>examples/sorting/custom/default.aspx</cell><cell>0</cell><cell>15</cell><cell>16</cell><cell>true</cell><cell>true</cell></row>    
-    <row><cell>11</cell><cell>Changing Sorting UI</cell><cell>examples/sorting/different_ui/default.aspx</cell><cell>0</cell><cell>15</cell><cell>16</cell><cell>true</cell><cell>true</cell></row>    
-    <row><cell>12</cell><cell>Disable sorting</cell><cell>examples/sorting/different_ui/default.aspx</cell><cell>0</cell><cell>15</cell><cell>16</cell><cell>true</cell><cell>true</cell></row>    
+    <row><cell>10</cell><cell>Custom Sorting</cell><cell>examples/sorting/custom/default.aspx</cell><cell>1</cell><cell>15</cell><cell>16</cell><cell>true</cell><cell>true</cell></row>    
+    <row><cell>11</cell><cell>Changing Sorting UI</cell><cell>examples/sorting/different_ui/default.aspx</cell><cell>1</cell><cell>15</cell><cell>16</cell><cell>true</cell><cell>true</cell></row>    
+    <row><cell>12</cell><cell>Disable sorting</cell><cell>examples/sorting/disable/default.aspx</cell><cell>1</cell><cell>15</cell><cell>16</cell><cell>true</cell><cell>true</cell></row>    
 </rows>

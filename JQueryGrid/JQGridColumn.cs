@@ -43,6 +43,20 @@ namespace Trirand.Web.UI.WebControls
                 ViewState["Sortable"] = value;
             }
         }
+
+        [DefaultValue("")]
+        public string DataField
+        {
+            get
+            {
+                return ViewState["DataField"] == null ? "" : (string)ViewState["DataField"];
+            }
+            set
+            {
+                ViewState["DataField"] = value;
+            }
+        }
+
     }
 
 }
