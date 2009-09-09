@@ -47,7 +47,7 @@ namespace GridTest.examples.sorting.disable {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Trirand.Web.UI.WebControls.JQueryGrid SqlDataSourceGrid;
+        protected global::Trirand.Web.UI.WebControls.JQGrid SqlDataSourceGrid;
         
         /// <summary>
         /// SqlDataSourceTabs control.

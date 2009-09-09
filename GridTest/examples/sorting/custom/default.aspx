@@ -14,11 +14,11 @@
     Custom sorting:
     <br /><br />    
         
-    <trirand:JQueryGrid 
+    <trirand:JQGrid 
         runat="server" 
         ID="CustomSortingGrid"        
         OnSorting="CustomSortingGrid_Sorting">
-    </trirand:JQueryGrid>
+    </trirand:JQGrid>
     
     <br /><br />
     <!-- This is needed by the example -- takes care of showing the code tabs for convenience. It is not needed by the grid -->

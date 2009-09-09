@@ -11,8 +11,8 @@
     <form id="form1" runat="server">
     <div>
        Binding to DataTable
-       <trirand:JQueryGrid ID="DataTableGrid" runat="server" >        
-       </trirand:JQueryGrid>
+       <trirand:JQGrid ID="DataTableGrid" runat="server" >        
+       </trirand:JQGrid>
        
        <br /><br />
        <trirand:codetabs runat="server" id="DataTableCodeTabs"></trirand:codetabs>    

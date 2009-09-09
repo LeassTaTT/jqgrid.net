@@ -29,7 +29,7 @@ namespace GridTest.examples.loading_data.datatable {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Trirand.Web.UI.WebControls.JQueryGrid DataTableGrid;
+        protected global::Trirand.Web.UI.WebControls.JQGrid DataTableGrid;
         
         /// <summary>
         /// DataTableCodeTabs control.

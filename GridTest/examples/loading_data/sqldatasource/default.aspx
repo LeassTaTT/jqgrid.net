@@ -20,7 +20,7 @@
         SelectCommand="SELECT [ID], [Email], [Password], [Role], [RegistrationDate] FROM [User]"></asp:SqlDataSource>
         
         
-    <trirand:JQueryGrid runat="server" ID="AutomaticSortingGrid" DataSourceID="SqlDataSource1"></trirand:JQueryGrid>
+    <trirand:JQGrid runat="server" ID="AutomaticSortingGrid" DataSourceID="SqlDataSource1"></trirand:JQGrid>
     
     <br /><br />
     

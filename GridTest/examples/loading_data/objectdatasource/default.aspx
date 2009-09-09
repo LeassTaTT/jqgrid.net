@@ -11,8 +11,8 @@
     <div>
     
     Binding to ObjectDataSource
-    <trirand:JQueryGrid ID="ObjectDataSourceGrid" runat="server" DataSourceID="ObjectDataSource1">        
-    </trirand:JQueryGrid>
+    <trirand:JQGrid ID="ObjectDataSourceGrid" runat="server" DataSourceID="ObjectDataSource1">        
+    </trirand:JQGrid>
    
     <br /><br />
     <trirand:codetabs runat="server" id="ObjectDataSourceTabs"></trirand:codetabs>    

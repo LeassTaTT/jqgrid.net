@@ -29,7 +29,7 @@ namespace GridTest.examples.loading_data.objectdatasource {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Trirand.Web.UI.WebControls.JQueryGrid ObjectDataSourceGrid;
+        protected global::Trirand.Web.UI.WebControls.JQGrid ObjectDataSourceGrid;
         
         /// <summary>
         /// ObjectDataSourceTabs control.

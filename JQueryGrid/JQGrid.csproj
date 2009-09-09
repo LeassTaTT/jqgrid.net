@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Trirand.Web.UI.WebControls</RootNamespace>
-    <AssemblyName>JQueryGrid</AssemblyName>
+    <AssemblyName>JQGrid</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Nonshipping>true</Nonshipping>
@@ -51,11 +51,15 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseItem.cs" />
+    <Compile Include="Base\BaseItemCollection.cs" />
     <Compile Include="ColModel.cs" />
     <Compile Include="EventArgs\JQGridSearchEventArgs.cs" />
     <Compile Include="EventArgs\JQGridSortEventArgs.cs" />
+    <Compile Include="JQGridColumn.cs" />
+    <Compile Include="JQGridColumnCollection.cs" />
     <Compile Include="Searching.cs" />
-    <Compile Include="JQueryGrid.cs" />
+    <Compile Include="JQGrid.cs" />
     <Compile Include="JsonResponse.cs" />
     <Compile Include="JsonRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

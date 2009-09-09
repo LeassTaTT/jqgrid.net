@@ -15,10 +15,12 @@ namespace Trirand.Web.UI.WebControls
 {
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:jqgrid runat=server></{0}:jqgrid>")]
-    public class JQueryGrid : CompositeDataBoundControl
+    public class JQGrid : CompositeDataBoundControl
     {
-        JavaScriptSerializer _sr;
-        HtmlTextWriter _output;
+        private JavaScriptSerializer _sr;
+        private HtmlTextWriter _output;
+        private JQGridColumnCollection _columnCollection;
+
         private static readonly object EventSorted;
         private static readonly object EventSorting;
         private static readonly object EventSearching;
@@ -27,7 +29,7 @@ namespace Trirand.Web.UI.WebControls
         public delegate void JQGridSortEventHandler(object sender, JQGridSortEventArgs e);
         public delegate void JQGridSearchEventHandler(object sender, JQGridSearchEventArgs e);
 
-        static JQueryGrid()
+        static JQGrid()
         {    
             EventSorted = new object();
             EventSorting = new object();
@@ -358,6 +360,28 @@ namespace Trirand.Web.UI.WebControls
                 ViewState["Caption"] = value;
             }
         }
+
+        [Description("DataControls_Columns")]
+        [MergableProperty(false)]
+        [DefaultValue((string)null)]
+        [Category("Default")]
+        [PersistenceMode(PersistenceMode.InnerProperty)]
+        public virtual JQGridColumnCollection Columns
+        {
+            get
+            {
+                if (this._columnCollection == null)
+                {
+                    this._columnCollection = new JQGridColumnCollection();                    
+                    if (base.IsTrackingViewState)
+                    {
+                        ((IStateManager)this._columnCollection).TrackViewState();
+                    }
+                }
+                return this._columnCollection;
+            }
+        }
+
 
         [Category("Action")]
         [Description("GridView_OnSorting")]

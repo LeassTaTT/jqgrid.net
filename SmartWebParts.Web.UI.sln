@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridTest", "GridTest\GridTest.csproj", "{1143C9E0-25AC-4336-BE5D-E28F26F14588}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JQueryGrid", "JQueryGrid\JQueryGrid.csproj", "{B6610FBA-5348-42DE-A1F8-13E08E5C6385}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JQGrid", "JQueryGrid\JQGrid.csproj", "{B6610FBA-5348-42DE-A1F8-13E08E5C6385}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

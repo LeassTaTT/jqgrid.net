@@ -10,8 +10,8 @@
     <form id="form1" runat="server">
     <div>
        Binding to XML
-       <trirand:JQueryGrid ID="XmlGrid" runat="server">
-       </trirand:JQueryGrid>
+       <trirand:JQGrid ID="XmlGrid" runat="server">
+       </trirand:JQGrid>
        
        <br /><br />
        <trirand:codetabs runat="server" id="XmlTabs"></trirand:codetabs>    

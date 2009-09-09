@@ -38,7 +38,7 @@ namespace GridTest.examples.loading_data.linqdatasource {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Trirand.Web.UI.WebControls.JQueryGrid LinqDataSourceGrid;
+        protected global::Trirand.Web.UI.WebControls.JQGrid LinqDataSourceGrid;
         
         /// <summary>
         /// LinqDataSourceTabs control.

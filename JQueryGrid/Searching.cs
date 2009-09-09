@@ -8,12 +8,12 @@ namespace Trirand.Web.UI.WebControls
 {
     public class Searching
     {
-        private JQueryGrid _grid;
+        private JQGrid _grid;
         private string _searchColunm;
         private string _searchString;
         private string _searchOperation;
 
-        public Searching(JQueryGrid grid, string searchColumn, string searchString, string searchOperation)
+        public Searching(JQGrid grid, string searchColumn, string searchString, string searchOperation)
         {
             this._grid = grid;
             this._searchColunm = searchColumn;

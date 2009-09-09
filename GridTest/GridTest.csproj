@@ -235,9 +235,9 @@
     <Content Include="tree.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JQueryGrid\JQueryGrid.csproj">
+    <ProjectReference Include="..\JQueryGrid\JQGrid.csproj">
       <Project>{B6610FBA-5348-42DE-A1F8-13E08E5C6385}</Project>
-      <Name>JQueryGrid</Name>
+      <Name>JQGrid</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -13,8 +13,8 @@
             <br />
             <br />
         </div>
-        <trirand:JQueryGrid runat="server" ID="LinqAtRuntimeGrid">
-        </trirand:JQueryGrid>
+        <trirand:JQGrid runat="server" ID="LinqAtRuntimeGrid">
+        </trirand:JQGrid>
         <br />
         <br />
         <trirand:codetabs runat="server" ID="LinqAtRuntimeTabs"></trirand:codetabs>

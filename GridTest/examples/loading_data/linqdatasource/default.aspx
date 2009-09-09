@@ -16,9 +16,9 @@
     </div>
     
         
-    <trirand:JQueryGrid runat="server" ID="LinqDataSourceGrid" 
+    <trirand:JQGrid runat="server" ID="LinqDataSourceGrid" 
         DataSourceID="LinqDataSource1">        
-    </trirand:JQueryGrid>
+    </trirand:JQGrid>
     
     <br /><br />
     <trirand:codetabs runat="server" id="LinqDataSourceTabs"></trirand:codetabs> 
